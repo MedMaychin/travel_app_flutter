@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+import 'package:travel_app_flutter/misc/colors.dart';
+import 'package:travel_app_flutter/widgets/app_large_text.dart';
+import 'package:travel_app_flutter/widgets/app_text.dart';
+import 'package:travel_app_flutter/widgets/resposive_button.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({super.key});
@@ -11,8 +14,8 @@ class WelcomePage extends StatefulWidget {
 class _WelcomePageState extends State<WelcomePage> {
   List images = [
     "travelbaggage.jpg",
-    "travelbaggage1.jpg",
     "travelbaggage2.jpg",
+    "travelbaggage3.jpg",
   ];
 
   @override
@@ -25,17 +28,50 @@ class _WelcomePageState extends State<WelcomePage> {
             return Container(
               width: double.maxFinite,
               height: double.maxFinite,
-              decoration:  BoxDecoration(
+              decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage("img/"+ images[index]),
-                  fit: BoxFit.cover,
+                  image: AssetImage("img/" + images[index]),
+                  // fit: BoxFit.cover,
                 ),
               ),
               child: Container(
-                margin: EdgeInsets.only(top: 150, left: 20 ,right: 20),
+                margin: const EdgeInsets.only(top: 100, left: 20, right: 20),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        AppLargeText(text: "Trips"),
+                        AppText(text: "Discovery Mountain"),
+                        SizedBox(height: 20),
+                        Container(
+                          width: 250,
+                          child: AppText(
+                              text: "We will build it step by step. We will "
+                                  "also build the ui and do api request. ",
+                              size: 12,
+                              color: AppColors.textColor2),
+                        ),
+                        SizedBox(height: 40),
+                        ResposiveButton(width: 120),
+                      ],
+                    ),
+                    Column(
+                      children: List.generate(3, (indexDots) {
+                        return Container(
+                          margin: const EdgeInsets.only(right: 8),
+                          width: 8,
+                          height: index == indexDots ? 25 : 8,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            color: index == indexDots
+                                ? AppColors.mainColor
+                                : AppColors.mainColor.withOpacity(0.3),
+                          ),
+                        );
+                      }),
+                    ),
                   ],
                 ),
               ),
