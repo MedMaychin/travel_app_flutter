@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:travel_app_flutter/misc/colors.dart';
 import 'package:travel_app_flutter/widgets/app_large_text.dart';
@@ -12,6 +11,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
+  var images = {
+    "1.png": "img1",
+    "2.png": "img2",
+    "3.png": "img3",
+    "button-one.png": "img4",
+  };
+
   @override
   Widget build(BuildContext context) {
     TabController _tabController = TabController(length: 3, vsync: this);
@@ -108,7 +114,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             ),
           ),
           //=========================Explore====
-          SizedBox(height: 10),
+          SizedBox(height: 20),
           Container(
             margin: EdgeInsets.only(left: 20, right: 20),
             child: Row(
@@ -141,14 +147,18 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                             borderRadius: BorderRadius.circular(20),
                             color: Colors.white,
                             image: DecorationImage(
-                              image: AssetImage("img/travelbaggage.jpg"),
+                              image: AssetImage(
+                                  "img/" + images.keys.elementAt(index)),
                               fit: BoxFit.cover,
                             ),
                           ),
                         ),
+                        SizedBox(height: 10),
                         Container(
-                          child:
-                              AppText(text: "Hello", color: AppColors.textColor1),
+                          child: AppText(
+                            text: images.values.elementAt(index),
+                            color: AppColors.textColor1,
+                          ),
                         )
                       ],
                     ),
