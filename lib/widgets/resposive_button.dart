@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:travel_app_flutter/misc/colors.dart';
+import 'package:travel_app_flutter/widgets/app_text.dart';
 
 class ResposiveButton extends StatelessWidget {
   bool? isResposive;
@@ -9,23 +10,32 @@ class ResposiveButton extends StatelessWidget {
   ResposiveButton({
     super.key,
     this.isResposive = false,
-    this.width,
+    this.width = 120,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 50,
-      width: this.width,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: AppColors.mainColor,
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Image.asset("img/button-one.png"),
-        ],
+    return Flexible(
+      child: Container(
+        height: 60,
+        width: isResposive == true ? double.maxFinite : width,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: AppColors.mainColor,
+        ),
+        child: Row(
+          mainAxisAlignment: isResposive == true
+              ? MainAxisAlignment.spaceBetween
+              : MainAxisAlignment.center,
+          children: [
+            isResposive == true
+                ? Container(
+                    margin: EdgeInsets.only(left: 20),
+                    child: AppText(text: "Book trip now ", color: Colors.white))
+                : Container(),
+            Image.asset("img/button-one.png"),
+          ],
+        ),
       ),
     );
   }
