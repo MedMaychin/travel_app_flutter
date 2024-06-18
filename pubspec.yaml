@@ -11,6 +11,10 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.6
+  bloc:
+  flutter_bloc:
+  equatable:
+  http:
 
 dev_dependencies:
   flutter_test:
@@ -24,6 +28,7 @@ flutter:
 
   assets:
      - img/
+     - model/data_json.json
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
